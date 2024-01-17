@@ -1,0 +1,56 @@
+<div>
+    <img id="background-recipes"
+        src="https://res.cloudinary.com/dbtmrinwa/image/upload/f_auto,q_auto/mclwnysu101ogudwnvo0" alt="">
+    <div class="row mt-4 text-center">
+        <h2 class="header">EVENTS</h2>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            {{#if isAdmin}}
+            <a href="/events/add" class="d-block button-62 m-2">Add an event</a>
+            {{/if}}
+        </div>
+    </div>
+    <div class="row justify-content-start text-center">
+        <div class="col-6">
+
+
+            <div class='eventMaxHeight overflow-auto'>
+                <div class="row">
+                    {{#each events}}
+                    <div class="col-10 card text-center m-2 pt-3">
+                        <h2>{{title}}</h2>
+                        <hr>
+                        <p class="description">{{description}}</p>
+                        <div class="row justify-content-between">
+                            <div class="col-6 text-start ingredients align-self-center">
+                                <a href="/events/{{_id}}/info" class=" d-block button-62 m-2">More info</a>
+
+                                {{#if ../isAdmin}}
+                                <a href="/events/{{_id}}/delete" class="d-block button-62 m-2">Delete</a>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-6">
+            <figure class="eventMaxHeight" id="map"></figure>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script src="/js/events-map.js"></script>
+<script src="/js/map-styles.js"></script>
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9cparf9WJ2kLOCPmr_4e_NRdstbvHob0&libraries=places&callback=initMap">
+    </script>
